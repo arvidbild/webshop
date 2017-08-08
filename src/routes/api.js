@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router(); 
 
 var ProductController = require("../controllers/ProductController");
+var userController = require("../controllers/userController");
 
 router.get("/:resource", function(req,res,next){
 
@@ -70,6 +71,24 @@ router.post("/:resource", function(req, res, next){
 			});
 		});
 	}
+
+	if (resource == "signup"){
+		userController.create(req.body, function(err,result){
+			if(err){
+				res.json({
+					confirmation: "fail",
+					message: "the post method didnt work"
+					});
+				return;
+				}			
+			res.json({
+				confirmation: "sucess with router.post",
+				message: result
+				})		
+		})
+	}
+
+
 });
 
 router.put("/:resource/:id", function(req,res,next){

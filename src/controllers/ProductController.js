@@ -4,12 +4,12 @@ module.exports = {
 
 	find: function(params, callback) {
 		
-		Products.find(params, function(err, results){
+		Products.find(params, function(err, result){
 			if (err) {
 				callback(err, null);
 				return;
 			}	
-			callback(null, results);
+			callback(null, result);
 		});
 	},
 
