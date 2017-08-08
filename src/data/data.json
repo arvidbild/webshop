@@ -1,0 +1,24 @@
+{
+    "users": {
+     "_model": "user",
+    
+        "Melker": {
+            
+        "fullName": "Melker",
+        "emailAdress": "Melker@.se",
+        "imagePath": "test.www"
+        }
+    },
+     
+     "Products": {
+     "_model": "Product",
+    
+        "General": {
+            
+        "name": "General",
+        "price": 10,
+        "description": "test.www"
+        }
+    }
+    
+}

@@ -1,0 +1,49 @@
+extends layout
+
+block content
+
+  body
+    
+    // http://v4-alpha.getbootstrap.com/utilities/typography/#text-alignment
+    .jumbotron.jumbotron-fluid.text-center
+      h1 Jumbotron
+      p this is the place to put the main content yo
+      p
+        a.btn.btn-primary.btn-lg(href='#', role='button') Learn more
+    
+
+    .container.container1
+      .row
+        .col-md-6.text-center
+          h1 This is the swedish snus - the perfect product!
+          button.btn.btn-primary(type='button') Explore products
+        .col-md-6.text-center
+          img.img-responsive.img-rounded(src='../images/image1.jpg', alt='snus image')
+    br
+    br
+    br
+    br
+    br
+    br
+    
+    .container.container2
+      .row
+        .col-md-4.text-center
+          img.img-responsive.img-rounded(src='../images/image1.jpg', alt='snus image')
+          h1 This is the swedish snus - the perfect product!
+        .col-md-4.text-center
+          img.img-fluid.img-rounded(src='../images/calender.jpg', alt='snus image')
+        .col-md-4.text-center
+          img.img-responsive.img-rounded(src='../images/cancel_anytime.png')
+    .container.container3.text-center
+      .row
+        button.btn.btn-primary(type='button') Join the club         
+
+    // jQuery (necessary for Bootstrap's JavaScript plugins)
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+    // Include all compiled plugins (below), or include individual files as needed
+    // Bootstrap CDN js
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+
+  
+  include footer.pug 

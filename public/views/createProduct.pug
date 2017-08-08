@@ -1,0 +1,60 @@
+extends layout
+
+block content
+
+  body
+
+    form(name="input", action='/api/createProduct', method='POST')
+             br
+             input(type='text', name="name", placeholder="name") 
+             br
+             br
+             input(type='text', name="description", placeholder="description")
+             br
+             br
+             input(type="text", name="price", placeholder="price")
+             br
+             br
+             input(type='submit', value='Create Product')
+
+    // http://v4-alpha.getbootstrap.com/utilities/typography/#text-alignment
+    .jumbotron.jumbotron-fluid.text-center
+      h1 Jumbotron
+      p this is the place to put the main content yo
+      p
+        a.btn.btn-primary.btn-lg(href='#', role='button') Learn more
+    
+    .container.container1
+      .row
+        .col-md-6.text-center
+          img.img-responsive(src='../images/General.jpg', alt='snus image')
+        .col-md-6.text-center
+          h1 General
+          p -Swedish Match-
+          p The General snus is one of the orginal brands of Swedish match
+
+          a.button.btn.btn-primary(href="/api/createProduct/+ this.id", type='button') Add $10
+    
+    .container.container1
+      .row
+        .col-md-6.text-center
+          h1 Göteborgs Rapé
+          p -Swedish Match-
+          p The Swedish Rapé is a Swedish Match snus from Gothenburg.
+          button.btn.btn-primary(type='button') Add $15
+        .col-md-6.text-center
+          img.img-responsive(src='../images/G%C3%B6teborgs%20Rap%C3%A9.jpg', alt='snus image')
+   
+    // jQuery (necessary for Bootstrap's JavaScript plugins)
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+    // Include all compiled plugins (below), or include individual files as needed
+    // Bootstrap CDN js
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+
+
+    include footer.pug 
+
+
+
+
+
