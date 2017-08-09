@@ -12,6 +12,7 @@ var mongoose = require("mongoose");
 //require the models
 var user = require("./src/models/User");
 var product = require("./src/models/Product");
+var chart = require("./src/models/Chart");
 
 
 //, data.json and seeder

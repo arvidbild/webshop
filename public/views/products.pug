@@ -21,7 +21,11 @@ block content
            p= product.description
            p= product.price
            p SEK
+<<<<<<< HEAD
            a.btn.btn-primary(href="/api/createProduct/" + product.id, role='button') Add to Chart
+=======
+           a.btn.btn-primary(href="/api/products/" + product.id, role='button') Add to Chart
+>>>>>>> testbranch
          .col-md-6.text-center
            img.img-responsive(src= product.imagePath)  
        
