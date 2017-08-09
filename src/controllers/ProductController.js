@@ -3,7 +3,7 @@ var Products = require("../models/Product");
 module.exports = {
 
 	find: function(params, callback) {
-		
+		console.log("you have reach the controller");
 		Products.find(params, function(err, result){
 			if (err) {
 				callback(err, null);

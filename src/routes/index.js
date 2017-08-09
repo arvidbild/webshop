@@ -6,9 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get("/createProduct", function(req,res,next){
-	res.render("createProduct", null );
-})
-
+router.get("/updateProduct", function(req,res,nest){
+	res.render("updateProduct",null);
+});
 
 module.exports = router;

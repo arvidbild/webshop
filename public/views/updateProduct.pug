@@ -12,3 +12,16 @@ block content
    br
    br
    input(type='submit', value='Update Product')
+
+  form(name="input", action='/api/createProduct', method='POST')
+    br
+    input(type='text', name="name", placeholder="name") 
+    br
+    br
+    input(type='text', name="description", placeholder="description")
+    br
+    br
+    input(type="text", name="price", placeholder="price")
+    br
+    br
+    input(type='submit', value='Create Product')

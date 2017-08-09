@@ -17,7 +17,18 @@
             
         "name": "General",
         "price": 10,
-        "description": "test.www"
+        "description": "Drängarnas snus",
+        "brand": "Swedish Match",
+        "imagePath": "../images/General.jpg"       
+        },
+
+        "Göteborgs Rapé": {
+
+        "name": "Göteborgs Rapé",
+        "price": 20,
+        "description": "finaste snuset",
+        "brand": "Skruff Snus AB",
+        "imagePath": "../images/rape.jpg"
         }
     }
     

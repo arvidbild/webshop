@@ -5,10 +5,12 @@ var ProductController = require("../controllers/ProductController");
 var userController = require("../controllers/userController");
 
 router.get("/:resource", function(req,res,next){
+	console.log("you have reach the API");
 
 	var resource = req.params.resource;
-
-		if (resource == "Products") {
+		
+		if (resource == "products") {
+		console.log("you are in the IF statement");
 			ProductController.find(req.query, function(err,results){
 				
 					if(err){
@@ -18,11 +20,9 @@ router.get("/:resource", function(req,res,next){
 						});
 						return;
 					}
-				
-					res.json({
-						confirmation: "sucess",
-						results: results
-					});
+					console.log(results);
+					var products = results
+					res.render("products", {data: products}); 			
 		});
 	}
 });
