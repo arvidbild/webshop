@@ -1,0 +1,36 @@
+extends layout
+
+block content
+
+  body
+
+    // http://v4-alpha.getbootstrap.com/utilities/typography/#text-alignment
+    .jumbotron.jumbotron-fluid.text-center
+      h1 Jumbotron
+      p this is the place to put the main content yo
+      p
+        a.btn.btn-primary.btn-lg(href='#', role='button') Learn more
+
+    h  
+      each product in data 
+       .container.container1
+        .row
+         .col-md-6.text-center
+           h1= product.name 
+           p= product.brand 
+           p= product.description
+           p= product.price
+           p SEK
+           a.btn.btn-primary(href="/api/products/" + product.id, role='button') Add to Chart
+         .col-md-6.text-center
+           img.img-responsive(src= product.imagePath)  
+       
+
+    // jQuery (necessary for Bootstrap's JavaScript plugins)
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+    // Include all compiled plugins (below), or include individual files as needed
+    // Bootstrap CDN js
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+
+
+    include footer.pug 
