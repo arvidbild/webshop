@@ -19,6 +19,17 @@
         "price": 10,
         "description": "test.www"
         }
+    },
+
+    "Charts" : {
+    "_model": "Chart",
+
+        "test": {
+        
+        "last_modified": "2016-12-12",
+        "status": "active",
+        "items": 1289,
+        "quantity": 1
+        }
     }
-    
 }
