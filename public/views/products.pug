@@ -21,7 +21,7 @@ block content
            p= product.description
            p= product.price
            p SEK
-           button.btn.btn-primary(type='button') Add to Chart
+           a.btn.btn-primary(href="/api/createProduct/" + product.id, role='button') Add to Chart
          .col-md-6.text-center
            img.img-responsive(src= product.imagePath)  
        

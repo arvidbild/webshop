@@ -91,8 +91,28 @@ router.post("/:resource", function(req, res, next){
 
 });
 
-router.put("/:resource/:id", function(req,res,next){
+router.post("/:resource/:id", function(req,res,next){
 
+	if(resource =="products"){
+		chartController.create(req.body, function(err,result){
+			if(err){
+				res.json({
+					confirmation: "fail"
+					message: "Post to chartController didnt work"
+				});
+			return; 	
+			}
+			res.json({
+				confirmation: "Sucess with router post to chartController"
+				message: result
+			});
+		});
+	}
+
+});
+
+router.put("/:resource/:id", function(req,res,next){
+console.log("we reached the API");
 	var resource = req.params.resource;
 	var id = req.params.id;
 
