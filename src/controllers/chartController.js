@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 var Charts = require("../models/Chart.js");
-=======
-var Charts = require("../models/Chart.js");
-
 
 
 module.exports = {
@@ -19,4 +15,3 @@ module.exports = {
 		});
 	}
 }
->>>>>>> testbranch

@@ -97,13 +97,13 @@ router.post("/:resource/:id", function(req,res,next){
 		chartController.create(req.body, function(err,result){
 			if(err){
 				res.json({
-					confirmation: "fail"
+					confirmation: "fail",
 					message: "Post to chartController didnt work"
 				});
 			return; 	
 			}
 			res.json({
-				confirmation: "Sucess with router post to chartController"
+				confirmation: "Sucess with router post to chartController",
 				message: result
 			});
 		});
