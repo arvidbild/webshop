@@ -15,7 +15,6 @@ var MongoStore = require("connect-mongo")(session);
 //require the models
 var user = require("./src/models/User");
 var product = require("./src/models/Product");
-var chart = require("./src/models/Chart");
 
 
 //, data.json and seeder
@@ -80,8 +79,7 @@ app.use(session({
 
 //middleware for the session to be reached too all views
 app.use(function(req,res,next){
-  console.log(req.session);
-  res.locals.session = req.session;   
+  res.locals.session = req.session;
   next();
 })
 
@@ -106,3 +104,5 @@ app.use(function(err, req, res, next) {
 var server = app.listen(app.get('port'), function() {
   console.log('Express server is listening on port ' + server.address().port);
 });
+
+module.exports = app; 
