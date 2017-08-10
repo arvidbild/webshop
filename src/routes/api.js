@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router(); 
+var Cart = require("../models/Chart");
 
 var ProductController = require("../controllers/ProductController");
 var userController = require("../controllers/userController");
@@ -31,8 +32,13 @@ router.get("/:resource/:id", function(req, res, next) {
 
 	var resource = req.params.resource;
 	var id = req.params.id;
+	console.log(req.session);
+	//create a new cart, if it already exist profgress with the current session - IF not create a new empty object. 
+	var cart = new Cart(req.session.cart ? req.session.cart : {});
+	console.log("do I reach affter hte new Cart?");
 
-	if(resource == "Products") {
+	if(resource == "products") {
+		console.log("do I reach the if statement?");
 	
 		ProductController.findById(id, function(err, result) {
 
@@ -44,11 +50,12 @@ router.get("/:resource/:id", function(req, res, next) {
 				
 				return;
 			}
-				res.json({
-					confirmation: "sucsess",
-					result: result
-				});
-			});
+				cart.add(product, product.id);
+				req.session.cart = cart; 
+				console.log(req.session.cart);
+				res.redirect("/api/products");
+
+		});
 	}
 });
 
@@ -91,25 +98,6 @@ router.post("/:resource", function(req, res, next){
 
 });
 
-router.post("/:resource/:id", function(req,res,next){
-
-	if(resource =="products"){
-		chartController.create(req.body, function(err,result){
-			if(err){
-				res.json({
-					confirmation: "fail",
-					message: "Post to chartController didnt work"
-				});
-			return; 	
-			}
-			res.json({
-				confirmation: "Sucess with router post to chartController",
-				message: result
-			});
-		});
-	}
-
-});
 
 router.put("/:resource/:id", function(req,res,next){
 console.log("we reached the API");
