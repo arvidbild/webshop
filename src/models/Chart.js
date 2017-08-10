@@ -5,9 +5,9 @@
 module.exports = function Cart (oldCart) {
 
 	//Assign the old cart values to the Cart
-	this.item = oldCart.items; 
-	this.totalQty = oldCart.totalQty; 
-	this.totalPrice = oldCart.totalPrice; 
+	this.item = oldCart.items || {}; 
+	this.totalQty = oldCart.totalQty || 0; 
+	this.totalPrice = oldCart.totalPrice ||0; 
 
 	//Function that add new Item to Cart
 	this.add = function (item, id){
