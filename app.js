@@ -5,9 +5,12 @@ var bodyParser = require('body-parser');
 var morgan = require("morgan");
 var pug = require("pug");
 
-
 //mongoose
 var mongoose = require("mongoose");
+
+//sessions
+var session = require("express-session");
+var MongoStore = require("connect-mongo")(session);
 
 //require the models
 var user = require("./src/models/User");
@@ -65,6 +68,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', index);
 app.use('/users', users);
 app.use("/api", api);
+
+// Use the session middleware
+app.use(session({ 
+             secret: 'keyboard cat', 
+             resave: false, //don't save session if unmodified 
+  saveUninitialized: false, // don't create session until something stored 
+              store: new MongoStore({mongooseConnection: mongoose.connection}),
+             cookie: {maxAge: 180 * 60 * 1000} 
+}));
+
+//middleware for the session to be reached too all views
+app.use(function(req,res,next){
+  console.log(req.session);
+  res.locals.session = req.session;   
+  next();
+})
+
 
 // catch 404 and forward to global error handler
 app.use(function(req, res, next) {
