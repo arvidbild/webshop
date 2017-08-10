@@ -1,15 +1,34 @@
 "use strict";
 
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema; 
+// This is a Javascript Constructor function
 
-var chartSchema = new Schema ({
+module.exports = function Cart (oldCart) {
 
-	last_modified: {type: String},
-	status: {type: String},
-	items: {type: Number},
-	quantity: {type: Number}
-}); 
+	//Assign the old cart values to the Cart
+	this.item = oldCart.items; 
+	this.totalQty = oldCart.totalQty; 
+	this.totalPrice = oldCart.totalPrice; 
 
+	//Function that add new Item to Cart
+	this.add = function (item, id){
 
-module.exports = mongoose.model("Chart", chartSchema);
+		//Checks if the Item already exist in the Cart or not. 
+		var storedItem = this.items[id];
+		if(!storedItem) {
+			storedItem = this.items[id] = {item: item, qty: 0, price: 0};
+		}
+		storedItem.qty++;
+        storedItem.price = storedItem.item.price * storedItem.qty;
+        this.totalQty++;
+        this.totalPrice += storedItem.item.price;
+	}
+
+	this.generateArray = function() {
+        var arr = [];
+        for (var id in this.items) {
+            arr.push(this.items[id]);
+        }
+        return arr;
+    };
+
+}
