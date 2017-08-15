@@ -11,8 +11,7 @@ module.exports = function Cart (oldCart) {
 
 	//Function that add new Item to Cart
 	this.add = function (item, id){
-		console.log(item);
-		console.log(id);
+	
 
 		//Checks if the Item already exist in the Cart or not. 
 		var storedItem = this.items[id];
@@ -24,6 +23,8 @@ module.exports = function Cart (oldCart) {
         this.totalQty++;
         this.totalPrice += storedItem.item.price;
 	}
+
+
 
 	this.generateArray = function() {
         var arr = [];

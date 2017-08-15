@@ -6,14 +6,13 @@ var ProductController = require("../controllers/ProductController");
 var userController = require("../controllers/userController");
 
 router.get("/:resource", function(req,res,next){
-	console.log("you have reach the API");
 
 	var resource = req.params.resource;
 		
 		if (resource == "products") {
-		console.log("you are in the IF statement");
 			ProductController.find(req.query, function(err,results){
 				
+
 					if(err){
 						res.json({
 							confirmation: "fail",
@@ -21,28 +20,37 @@ router.get("/:resource", function(req,res,next){
 						});
 						return;
 					}
-					console.log(results);
 					var products = results
 					res.render("products", {data: products}); 			
 		});
 	}
+
+		if(resource == "cart"){
+						
+			if(!req.session.cart){
+				return res.render("cart", {products: null})
+			}
+			var cart = new Cart(req.session.cart);
+			res.render("cart",{products: cart.generateArray(), totalPrice: cart.totalPrice, totalQty: cart.totalQty});
+		}
+
+		if(resource == "remove"){
+			
+		req.session.cart = delete cart; 
+		res.redirect("/api/cart");
+		}	
 });
 
 router.get("/:resource/:id", function(req, res, next) {
 
 	var resource = req.params.resource;
 	var id = req.params.id;
-	console.log(req.session);
 	//create a new cart, if it already exist profgress with the current session - IF not create a new empty object. 
 	var cart = new Cart(req.session.cart ? req.session.cart : {});
-	console.log("do I reach affter hte new Cart?");
-
-	if(resource == "products") {
-		console.log("do I reach the if statement?");
 	
+	if(resource == "products") {
+
 		ProductController.findById(id, function(err, result) {
-			console.log("do i reach the monogdb?");
-			console.log(result);
 			if(err){
 				res.json({
 					confirmation: "fail",
@@ -54,11 +62,11 @@ router.get("/:resource/:id", function(req, res, next) {
 			
 				cart.add(result, result.id);
 				req.session.cart = cart; 
-				console.log(req.session.cart);
 				res.redirect("/api/products");
 
 		});
 	}
+
 });
 
 router.post("/:resource", function(req, res, next){

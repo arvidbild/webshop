@@ -21,7 +21,6 @@ passport.use(new FacebookStrategy({
     profileFields: ['id', 'displayName', 'link', 'photos', 'emails']
   },
     function (accessToken, refreshToken, profile, done){
-        console.log(profile);
 
       if(profile.emails[0]) {
         User.findOneAndUpdate(
