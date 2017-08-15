@@ -2,6 +2,16 @@ var passport = require('passport');
 var User = require('../src/models/User');
 var FacebookStrategy = require("passport-facebook").Strategy;
 
+passport.serializeUser(function (user, done) {
+    done(null, user.id);
+});
+
+passport.deserializeUser(function (id, done) {
+    User.findById(id, function (err, user) {
+        done(err, user);
+    });
+});
+
 
 //use facebook login with passport strategy (process.env. is enviroment variables)
 passport.use(new FacebookStrategy({
@@ -12,13 +22,14 @@ passport.use(new FacebookStrategy({
   },
     function (accessToken, refreshToken, profile, done){
         console.log(profile);
+
       if(profile.emails[0]) {
         User.findOneAndUpdate(
-          { email: profile.emails[0].value },
+          { emailAdress: profile.emails[0].value },
           {
-            name: profile.displayName || profile.username,
-            email: profile.emails[0].value,
-            photo: profile.photos[0].value
+               fullName: profile.displayName || profile.username,
+            emailAdress: profile.emails[0].value,
+              imagePath: profile.photos[0].value
           },
           {
             upsert: true
