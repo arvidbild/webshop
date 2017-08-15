@@ -20,6 +20,7 @@ var data = require("./src/data/data.json");
 var index = require('./src/routes/index');
 var users = require('./src/routes/users');
 var api = require("./src/routes/api");
+require('./config/passport');
 
 var app = express();
 
