@@ -4,6 +4,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require("morgan");
 var pug = require("pug");
+var passport = require("passport");
 
 //mongoose
 var mongoose = require("mongoose");
@@ -60,16 +61,11 @@ app.use(bodyParser.json());
 //The body-parser middleware parse the form body into server side variable req.body.
 app.use(bodyParser.urlencoded({ extended: false }));
 
-//Setup for our routes
-app.use('/', index);
-app.use('/users', users);
-app.use("/api", api);
-
 // Use the session middleware
 app.use(session({ 
              secret: 'keyboard cat', 
-     //        resave: false, //don't save session if unmodified 
- // saveUninitialized: false, // don't create session until something stored 
+     //       resave: false, //don't save session if unmodified 
+  // saveUninitialized: false, // don't create session until something stored 
               store: new MongoStore({mongooseConnection: mongoose.connection}),
              cookie: {maxAge: 180 * 60 * 1000} 
 }));
@@ -79,6 +75,14 @@ app.use(function(req,res,next){
   res.locals.session = req.session;
   next();
 })
+
+//Initialize passport
+app.use(passport.initialize());
+
+//Setup for our routes
+app.use('/', index);
+app.use('/users', users);
+app.use("/api", api);
 
 
 // catch 404 and forward to global error handler
