@@ -78,6 +78,8 @@ app.use(function(req,res,next){
 
 //Initialize passport
 app.use(passport.initialize());
+app.use(passport.session());
+
 
 //Setup for our routes
 app.use('/', index);
