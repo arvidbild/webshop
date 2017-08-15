@@ -41,7 +41,8 @@ router.get("/:resource/:id", function(req, res, next) {
 		console.log("do I reach the if statement?");
 	
 		ProductController.findById(id, function(err, result) {
-
+			console.log("do i reach the monogdb?");
+			console.log(result);
 			if(err){
 				res.json({
 					confirmation: "fail",
@@ -50,7 +51,8 @@ router.get("/:resource/:id", function(req, res, next) {
 				
 				return;
 			}
-				cart.add(product, product.id);
+			
+				cart.add(result, result.id);
 				req.session.cart = cart; 
 				console.log(req.session.cart);
 				res.redirect("/api/products");
