@@ -21,6 +21,7 @@ var data = require("./src/data/data.json");
 var index = require('./src/routes/index');
 var users = require('./src/routes/users');
 var api = require("./src/routes/api");
+var cart = require("./src/routes/cart");
 require('./config/passport');
 
 var app = express();
@@ -85,6 +86,7 @@ app.use(passport.session());
 app.use('/', index);
 app.use('/users', users);
 app.use("/api", api);
+app.use("/cart", cart);
 
 
 // catch 404 and forward to global error handler
