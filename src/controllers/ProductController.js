@@ -1,10 +1,11 @@
-var Products = require("../models/Product");
+var Product = require("../models/Product");
 
 module.exports = {
 
 	find: function(params, callback) {
 		console.log("you have reach the controller");
-		Products.find(params, function(err, result){
+		
+		Product.find(params, function(err, result){
 			if (err) {
 				callback(err, null);
 				return;
@@ -15,7 +16,7 @@ module.exports = {
 
 	findById: function(id, callback) {
 
-		Products.findById(id, function(err, result){
+		Product.findById(id, function(err, result){
 
 			if(err) {
 				callback(err, null);
@@ -26,7 +27,7 @@ module.exports = {
 	},
 
 	create: function(params, callback) {
-		Products.create(params, function(err, result){
+		Product.create(params, function(err, result){
 
 
 			if(err){
@@ -38,7 +39,7 @@ module.exports = {
 	},
 
 	update: function(params, callback) {
-		Products.findByIdAndUpdate(id, params,{new:true}, function(err, result){
+		Product.findByIdAndUpdate(id, params,{new:true}, function(err, result){
 
 			if(err){
 				callback(err,null);
@@ -49,7 +50,7 @@ module.exports = {
 	},
 
 	delete: function(id, callback) {
-		Products.findByIdAndDelete(id, function(err,result){
+		Product.findByIdAndDelete(id, function(err,result){
 
 			if(err){
 				callback(err,null);
@@ -59,9 +60,4 @@ module.exports = {
 		});
 
 	}
-
 }
-
-
-
-
