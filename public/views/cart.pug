@@ -12,23 +12,23 @@ block content
   if products
     each product in products
      h3 Produktnamn 
-      a.btn.btn-primary(href="#", role='button') Remove
+      a.btn.btn-primary(href="/api/reduce/" + product.item._id, role='button') Reduce
      p= product.item.name
      h3 Produktens pris
      P= product.item.price
       
 
       br
-    
-    h3 Totalpris  
-    p= totalPrice
-    h3 Totalt antal
-    p= totalQty
+   
+     h3 Totalpris  
+     p= totalPrice
+     h3 Totalt antal
+     p= totalQty
 
       br
       br
     
-      a.btn.btn-primary(href="#", role='button') Checkout
+    a.btn.btn-primary(href="#", role='button') Checkout
     a.btn.btn-primary(href="/api/remove", role='button') Remove all
   
   else 

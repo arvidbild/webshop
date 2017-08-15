@@ -63,8 +63,20 @@ router.get("/:resource/:id", function(req, res, next) {
 				cart.add(result, result.id);
 				req.session.cart = cart; 
 				res.redirect("/api/products");
-
 		});
+	}
+
+	if(resource == "reduce") {
+
+		var cart = new Cart(req.session.cart ? req.session.cart: {});
+		
+		console.log(cart);		
+
+
+		cart.reduce(id);
+
+		res.redirect("/api/cart");
+
 	}
 
 });
