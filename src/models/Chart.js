@@ -5,12 +5,14 @@
 module.exports = function Cart (oldCart) {
 
 	//Assign the old cart values to the Cart
-	this.item = oldCart.items || {}; 
+	this.items = oldCart.items || {}; 
 	this.totalQty = oldCart.totalQty || 0; 
 	this.totalPrice = oldCart.totalPrice ||0; 
 
 	//Function that add new Item to Cart
 	this.add = function (item, id){
+		console.log(item);
+		console.log(id);
 
 		//Checks if the Item already exist in the Cart or not. 
 		var storedItem = this.items[id];
