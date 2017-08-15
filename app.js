@@ -12,11 +12,6 @@ var mongoose = require("mongoose");
 var session = require("express-session");
 var MongoStore = require("connect-mongo")(session);
 
-//require the models
-var user = require("./src/models/User");
-var product = require("./src/models/Product");
-
-
 //, data.json and seeder
 var seeder = require("mongoose-seeder");
 var data = require("./src/data/data.json");
@@ -32,6 +27,7 @@ var app = express();
 Connect to the database
 **/
 mongoose.connect("mongodb://localhost:27017/webshop");
+require("./config/passport.js");
 var db = mongoose.connection;
 
 db.on("error", console.error.bind(console,"connetion error"));
