@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
@@ -20,5 +20,4 @@ var productSchema = new Schema ({
     
 });
 
-var Product = mongoose.model("Product", productSchema);
-module.exports = Product;
+module.exports = mongoose.model("Product", productSchema);
