@@ -1,12 +1,13 @@
 {
-    "users": {
-     "_model": "user",
+    "Users": {
+     "_model": "User",
     
         "Melker": {
             
         "fullName": "Melker",
         "emailAdress": "Melker@.se",
-        "imagePath": "test.www"
+        "imagePath": "test.www",
+        "assets" : "hej"
         }
     },
      
