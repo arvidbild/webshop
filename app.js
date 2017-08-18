@@ -1,10 +1,14 @@
 "use strict"
 
 var express = require('express');
+var path = require("path");
+var favicon = require("serve-favicon");
+var logger = require("morgan");
 var bodyParser = require('body-parser');
 var morgan = require("morgan");
 var pug = require("pug");
 var passport = require("passport");
+
 
 //mongoose
 var mongoose = require("mongoose");
