@@ -1,7 +1,6 @@
 {
   "name": "webshop",
   "version": "0.0.0",
-  "private": true,
   "scripts": {
     "start": "nodemon app.js localhost 5000"
   },
